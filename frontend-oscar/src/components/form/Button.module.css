@@ -1,0 +1,18 @@
+.button {
+  font-family: 'Inter', sans-serif;
+  background-color: #dfca4e;
+  color: #3c3030;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, border 0.3s ease; 
+  border: none;
+}
+
+.button:hover {
+  background-color: #110e0e;
+  color: #fff;
+  border: 2px solid #dfca4e; 
+}
