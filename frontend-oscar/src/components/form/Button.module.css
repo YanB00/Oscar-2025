@@ -12,7 +12,7 @@
 }
 
 .button:hover {
-  background-color: #110e0e;
-  color: #fff;
+  background-color: var(--fundo-hover);
+  color: var(--cor-texto-hover);
   border: 2px solid #dfca4e; 
 }

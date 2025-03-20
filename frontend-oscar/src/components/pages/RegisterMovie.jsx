@@ -2,11 +2,12 @@ import React from 'react';
 import Input from '../form/Input';
 import Button from '../form/Button';
 import Select from '../form/Select';
+import style from './RegisterMovie.module.css';
 
 const RegisterMovie = () => {
   return (
     <section>
-      <form>
+      <form className={style.form}>
         <h1>Cadastrar Filmes</h1>
         <Input
           movieIndicated="Nome do filme:"
@@ -22,12 +23,13 @@ const RegisterMovie = () => {
           idPerson="personName"
         />
 
-
-        <Select
-         name='slc_categoria'
-         id='slc_categoria'
-         text='Categoria do Indicado:'
-        />
+        <div className={style.selectContainer}> {/* Adicionado um container para o Select */}
+          <Select 
+            name='slc_categoria'
+            id='slc_categoria'
+            text='Categoria do Indicado:'
+          />
+        </div>
         
         <Button label='Cadastrar Filmes'/>
       </form>

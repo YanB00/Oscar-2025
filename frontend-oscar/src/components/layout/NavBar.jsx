@@ -31,6 +31,7 @@ const Navbar = () => {
       <div className={style.container}>{}
         <Sidebar showSidebar={showSidebar} /> 
         <div className={style.menuContainer}>
+        <Link to="/" className={style.sobre}>Home</Link> 
         <Link to="/Sobre" className={style.sobre}>Sobre</Link> 
 
             <Button  label='Cadastrar'/>
