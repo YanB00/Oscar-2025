@@ -1,6 +1,6 @@
 import style from '../form/Input.module.css';
 
-function Input({ movieIndicated, idMovie, personIndicated, idPerson }) {
+function Input({ movieIndicated, idMovie, personIndicated, idPerson, handlerChange}) {
   return (
     <div>
       {movieIndicated && (
@@ -10,6 +10,7 @@ function Input({ movieIndicated, idMovie, personIndicated, idPerson }) {
             type="text"
             id={idMovie}
             placeholder={`Digite o ${movieIndicated}`}
+            onChange={handlerChange}
           />
         </div>
       )}
@@ -21,6 +22,7 @@ function Input({ movieIndicated, idMovie, personIndicated, idPerson }) {
             type="text"
             id={idPerson}
             placeholder={`Digite o ${personIndicated}`}
+            onChange={handlerChange}
           />
         </div>
       )}

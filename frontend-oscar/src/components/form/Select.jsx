@@ -1,6 +1,6 @@
 import style from './Select.module.css'
 
-function Select({ text, name, id }) {
+function Select({ text, name, id, handlerChange }) {
   const categories = [
   "Melhor Filme",
   "Melhor Diretor",
@@ -29,7 +29,7 @@ function Select({ text, name, id }) {
   return (
     <div className={style.form_control}>
       <label htmlFor={name}>{text}</label>
-      <select name={name} id={id}>
+      <select name={name} id={id} onChange={handlerChange}> 
         <option value="">Selecione uma categoria</option>
         {categories.map((category, index) => (
           <option key={index} value={category}>{category}</option>
