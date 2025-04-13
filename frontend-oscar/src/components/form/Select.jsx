@@ -1,39 +1,17 @@
 import style from './Select.module.css'
 
-function Select({ text, name, id, handlerChange }) {
-  const categories = [
-  "Melhor Filme",
-  "Melhor Diretor",
-  "Melhor Ator",
-  "Melhor Atriz",
-  "Melhor Ator Coadjuvante",
-  "Melhor Atriz Coadjuvante",
-  "Melhor Roteiro Original",
-  "Melhor Roteiro Adaptado",
-  "Melhor Filme de Animação",
-  "Melhor Filme Internacional",
-  "Melhor Documentário",
-  "Melhor Curta-Metragem",
-  "Melhor Curta de Animação",
-  "Melhor Curta Documentário",
-  "Melhor Trilha Sonora Original",
-  "Melhor Canção Original",
-  "Melhor Design de Produção",
-  "Melhor Figurino",
-  "Melhor Maquiagem e Cabelo",
-  "Melhor Som",
-  "Melhores Efeitos Visuais",
-  "Melhor Edição"
-  ];
+function Select({ text, name, id, handlerChange, options }) {
 
   return (
     <div className={style.form_control}>
       <label htmlFor={name}>{text}</label>
       <select name={name} id={id} onChange={handlerChange}> 
         <option value="">Selecione uma categoria</option>
-        {categories.map((category, index) => (
-          <option key={index} value={category}>{category}</option>
-        ))}
+        {
+          options.map((option)=>(
+            <option value={option.cod_categoria} key={option.cod_categoria}>{option.nome_categoria}</option>
+          ))
+        }
       </select>
     </div>
   );

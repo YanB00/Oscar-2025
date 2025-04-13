@@ -2,11 +2,14 @@ import React from 'react';
 import Input from '../form/Input';
 import Button from '../form/Button';
 import Select from '../form/Select';
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
 import style from './RegisterMovie.module.css';
 
 const RegisterMovie = () => {
   const [movie, setMovie] = useState({})
+
+  const [categories, setCategories] = useState([]);
 
   function handlerChangeMovie(event){
     setMovie({... movie, [event.target.name] :event.target.value});
@@ -14,14 +17,51 @@ const RegisterMovie = () => {
   }
 
   function handlerChangeCategory(event){
-    setMovie({... movie, category: event.target.options[event.target.selectedIndex].text})
+    setMovie({... movie, cod_categoria: event.target.value})
   }
 
   function submit(event){
     event.preventDefault();
     console.log(movie);
+    insertMovie(movie);
   }
 
+  useEffect(()=>{
+    fetch('http://localhost:5000/listagemCategoria',{
+      method:'GET',
+      headers:{
+          'Content-Type':'application/json',
+          'Access-Control-Allow-Origin':'*',
+          'Access-Control-Allow-Headers':'*'
+    },
+  }).then((resp)=>
+    resp.json()
+  ).then((categorias)=>{
+    console.log('TESTE '+ categorias.data);
+    setCategories(categorias.data)
+  }).catch((error)=>{
+    console.log('Erro: ' + error);
+  })
+}, []);
+
+function insertMovie(movie){
+  fetch('http://localhost:5000/listagemCategoria',{
+    method:'POST',
+    mode: 'cors',
+    headers:{
+        'Content-Type':'application/json',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Headers':'*'
+  },
+  body:JSON.stringify(movie)
+}).then((resp)=>
+    resp.json()
+).then((respJSON)=>{
+  console.log('RESPOSTA: ' +respJSON);
+}).catch((error)=>{
+  console.log('Erro ' + error)
+})
+}
   return (
     <section>
       <form className={style.form} onSubmit={submit}>
@@ -48,6 +88,7 @@ const RegisterMovie = () => {
             id='slc_categoria'
             text='Categoria do Indicado:'
             handlerChange={handlerChangeCategory}
+            options={categories}
           />
         </div>
         
