@@ -2,7 +2,7 @@ import React from 'react';
 import Input from '../form/Input';
 import Button from '../form/Button';
 import Select from '../form/Select';
-
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import style from './RegisterMovie.module.css';
 
@@ -10,6 +10,8 @@ const RegisterMovie = () => {
   const [movie, setMovie] = useState({})
 
   const [categories, setCategories] = useState([]);
+
+  const navigate = useNavigate();
 
   function handlerChangeMovie(event){
     setMovie({... movie, [event.target.name] :event.target.value});
@@ -45,7 +47,7 @@ const RegisterMovie = () => {
 }, []);
 
 function insertMovie(movie){
-  fetch('http://localhost:5000/listagemCategoria',{
+  fetch('http://localhost:5000/RegisterMovie',{
     method:'POST',
     mode: 'cors',
     headers:{
@@ -61,7 +63,9 @@ function insertMovie(movie){
 }).catch((error)=>{
   console.log('Erro ' + error)
 })
+
 }
+
   return (
     <section>
       <form className={style.form} onSubmit={submit}>
