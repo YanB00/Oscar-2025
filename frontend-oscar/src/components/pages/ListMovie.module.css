@@ -1,0 +1,65 @@
+.movieListContainer {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.movieListContainer h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #110e0e;
+}
+
+.movieGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza os cards */
+    gap: 1.5rem;
+}
+
+.movieCard {
+    background-color: #f8f4db;
+    border: 1px solid #dfca4e;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 220px;
+    text-align: center;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.movieCard:hover {
+    transform: scale(1.03);
+}
+
+.movieCard img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.movieCard h3 {
+    margin: 0.5rem 0;
+    color: #110e0e;
+    font-weight: bold;
+}
+
+.movieCard p {
+    margin-bottom: 0.75rem;
+    color: #333;
+}
+
+.movieCard button {
+    background-color: #dfca4e;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: #110e0e;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.movieCard button:hover {
+    background-color: #c2b23f;
+}

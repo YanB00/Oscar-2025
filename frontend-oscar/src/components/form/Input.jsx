@@ -1,6 +1,6 @@
 import style from '../form/Input.module.css';
 
-function Input({ movieIndicated, idMovie, personIndicated, idPerson, handlerChange}) {
+function Input({ movieIndicated, idMovie, personIndicated, idPerson, name, handlerChange}) {
   return (
     <div>
       {movieIndicated && (
@@ -9,6 +9,7 @@ function Input({ movieIndicated, idMovie, personIndicated, idPerson, handlerChan
           <input
             type="text"
             id={idMovie}
+            name={name} // Adicione a prop name aqui
             placeholder={`Digite o ${movieIndicated}`}
             onChange={handlerChange}
           />
@@ -21,6 +22,7 @@ function Input({ movieIndicated, idMovie, personIndicated, idPerson, handlerChan
           <input
             type="text"
             id={idPerson}
+            name={name} // Adicione a prop name aqui
             placeholder={`Digite o ${personIndicated}`}
             onChange={handlerChange}
           />

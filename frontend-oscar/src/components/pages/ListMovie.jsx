@@ -3,11 +3,14 @@ import React, {useEffect,useState} from "react";
 import MovieCard from '../MovieCard';
 import ContainerMovie from '../layout/ContainerMovie';
 
+import conclave from '../../../assets/conclave.jpg';
+import style from   './ListMovie.module.css';
+
 const ListMovie = ()=>{
     const [movies, setMovies] = useState([]);
 
     useEffect(()=>{
-        fetch('http://127.0.0.1:5000/listagemFilmes',{
+        fetch('http://localhost:5000/listagemFilmes',{
             method: 'GET',
             mode:'cors',
             headers:{
@@ -17,28 +20,34 @@ const ListMovie = ()=>{
             }
         })
         .then((resp)=>resp.json())
-        .then((movieData)=>{
-            console.log(movieData.data);
-            setBooks(movieData.data);
-        })
-        .catch((err)=>{console.log(err)});
-
+.then((movieData) => {
+    console.log(movieData);
+    if (movieData && movieData.data) {
+        setMovies(movieData.data);
+    } else {
+        console.error("API retornou dados em formato inesperado:", movieData);
+        setMovies([]);
+    }
+})
     },[])
 
     return(
-        <section>
+        <section className={style.movieListContainer}> {/* Aplique a classe no container da lista */}
             <h1>LIST MOVIE</h1>
+            <div className={style.movieGrid}>
             <ContainerMovie>
                 {
                     movies.map((movie)=>(
-                        <MovieCard
-                        nome_filme={movie.nome_filme}
-                        nome_indicado={movie.nome_indicado}
-                        key={movie.cod_categoria}
-                        />
+                        <div className={style.movieCard} key={movie.cod_filme}> {/* Envolva cada MovieCard com a div estilizada */}
+                            <img src={conclave} alt={movie.nome_filme} />
+                            <h3>{movie.nome_filme}</h3>
+                            <p>Indicado: {movie.nome_indicado}</p>
+                            <button>Ver Detalhes</button>
+                        </div>
                     ))
                 }
             </ContainerMovie>
+             </div>
         </section>
     )
 }

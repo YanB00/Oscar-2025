@@ -47,25 +47,34 @@ const RegisterMovie = () => {
 }, []);
 
 function insertMovie(movie){
-  fetch('http://localhost:5000/RegisterMovie',{
+  fetch('http://localhost:5000/registerMovie',{
     method:'POST',
     mode: 'cors',
     headers:{
-        'Content-Type':'application/json',
-        'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Headers':'*'
-  },
-  body:JSON.stringify(movie)
-}).then((resp)=>
-    resp.json()
-).then((respJSON)=>{
-  console.log('RESPOSTA: ' +respJSON);
-}).catch((error)=>{
-  console.log('Erro ' + error)
-})
-
+      'Content-Type':'application/json',
+      'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Headers':'*'
+    },
+    body:JSON.stringify(movie)
+  })
+  .then((resp) => {
+    if (!resp.ok) {
+      // Se a resposta não for ok, vamos tentar obter o JSON de erro
+      return resp.json().then((errorData) => {
+        console.error('Erro na requisição:', resp.status, errorData);
+        throw new Error(`Erro na requisição: ${resp.status} - ${errorData.mensageStatus || JSON.stringify(errorData)}`);
+      });
+    }
+    // Se a resposta for ok (status 2xx), parseamos o JSON de sucesso
+    return resp.json().then((data) => {
+      console.log('RESPOSTA SUCESSO:', data);
+      // Aqui você pode lidar com a resposta de sucesso
+    });
+  })
+  .catch((error) => {
+    console.error('Erro ao enviar os dados:', error);
+  });
 }
-
   return (
     <section>
       <form className={style.form} onSubmit={submit}>
@@ -73,6 +82,7 @@ function insertMovie(movie){
         <Input
           movieIndicated="Nome do filme:"
           idMovie="movieName"
+          name="nome_filme"
           personIndicated="" // Não precisa passar aqui, pois é para o segundo input
           idPerson="" 
           handlerChange={handlerChangeMovie}
@@ -83,6 +93,7 @@ function insertMovie(movie){
           idMovie="" 
           personIndicated="Nome do indicado a categoria:"
           idPerson="personName"
+          name="nome_indicado"
           handlerChange={handlerChangeMovie}
         />
 
