@@ -31,25 +31,25 @@ const ListMovie = ()=>{
 })
     },[])
 
-    return(
-        <section className={style.movieListContainer}> {/* Aplique a classe no container da lista */}
-            <h1>LIST MOVIE</h1>
-            <div className={style.movieGrid}>
-            <ContainerMovie>
-                {
-                    movies.map((movie)=>(
-                        <div className={style.movieCard} key={movie.cod_filme}> {/* Envolva cada MovieCard com a div estilizada */}
-                            <img src={conclave} alt={movie.nome_filme} />
-                            <h3>{movie.nome_filme}</h3>
-                            <p>Indicado: {movie.nome_indicado}</p>
-                            <button>Ver Detalhes</button>
-                        </div>
-                    ))
-                }
-            </ContainerMovie>
-             </div>
-        </section>
-    )
+   return (
+    <section className={style.movieListContainer}>
+      <h1>LIST MOVIE</h1>
+      <div className={style.movieGrid}>
+        <ContainerMovie>
+          {movies.map((movie) => (
+            <MovieCard
+              key={movie.cod_filme}
+              cod_filme={movie.cod_filme}
+              nome_filme={movie.nome_filme}
+              nome_indicado={movie.nome_indicado}
+              cod_categoria={movie.cod_categoria}
+              imagem={conclave} // Substitua por movie.imagem se o dado vier da API
+            />
+          ))}
+        </ContainerMovie>
+      </div>
+    </section>
+  )
 }
 
-export default ListMovie
+export default ListMovie;
