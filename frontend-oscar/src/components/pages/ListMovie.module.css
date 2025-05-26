@@ -14,7 +14,7 @@
 .movieGrid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centraliza os cards */
+    justify-content: center; 
     gap: 1.5rem;
 }
 

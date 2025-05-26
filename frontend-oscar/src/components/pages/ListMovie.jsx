@@ -43,7 +43,7 @@ const ListMovie = ()=>{
               nome_filme={movie.nome_filme}
               nome_indicado={movie.nome_indicado}
               cod_categoria={movie.cod_categoria}
-              imagem={conclave} // Substitua por movie.imagem se o dado vier da API
+              imagem={conclave} 
             />
           ))}
         </ContainerMovie>

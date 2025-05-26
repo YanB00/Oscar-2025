@@ -1,4 +1,3 @@
-// Navbar.js
 import { Link } from 'react-router-dom';
 import style from './NavBar.module.css';
 import Button from '../form/Button';
@@ -6,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import Sidebar from './Sidebar'; 
+import logoOscarImage from '../../../public/logooscar.png';
 
 const Navbar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -23,7 +23,7 @@ const Navbar = () => {
           onClick={toggleSidebar} 
         />
         <Link to="/" className={style.brand}>
-          <img className={style.logo} src='./logooscar.png' alt='logo do Oscar' />
+          <img className={style.logo} src={logoOscarImage} alt='Logo do Oscar' />
           <span className={style.title}>Oscar</span>
         </Link>
       </div>

@@ -7,9 +7,9 @@ import Button from '../Button';
 
 import conclave from '../../../assets/conclave.jpg';
 
-const DetailBook = ()=>{
+const DetailMovie = ()=>{
     const {cod_filme} = useParams();
-    console.log('ID:' +cod_filme);
+    console.log('ID do filme:' +cod_filme);
 
     const [movie, setMovie] = useState({});
 
@@ -59,4 +59,4 @@ const DetailBook = ()=>{
         </div>
     )
 }
-export default DetailBook;
+export default DetailMovie;

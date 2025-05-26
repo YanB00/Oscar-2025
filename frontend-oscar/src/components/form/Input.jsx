@@ -9,7 +9,7 @@ function Input({ movieIndicated, idMovie, personIndicated, idPerson, name, handl
           <input
             type="text"
             id={idMovie}
-            name={name} // Adicione a prop name aqui
+            name={name} 
             placeholder={`Digite o ${movieIndicated}`}
             onChange={handlerChange}
           />
@@ -22,7 +22,7 @@ function Input({ movieIndicated, idMovie, personIndicated, idPerson, name, handl
           <input
             type="text"
             id={idPerson}
-            name={name} // Adicione a prop name aqui
+            name={name} 
             placeholder={`Digite o ${personIndicated}`}
             onChange={handlerChange}
           />

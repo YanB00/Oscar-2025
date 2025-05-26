@@ -59,16 +59,13 @@ function insertMovie(movie){
   })
   .then((resp) => {
     if (!resp.ok) {
-      // Se a resposta não for ok, vamos tentar obter o JSON de erro
       return resp.json().then((errorData) => {
         console.error('Erro na requisição:', resp.status, errorData);
         throw new Error(`Erro na requisição: ${resp.status} - ${errorData.mensageStatus || JSON.stringify(errorData)}`);
       });
     }
-    // Se a resposta for ok (status 2xx), parseamos o JSON de sucesso
     return resp.json().then((data) => {
       console.log('RESPOSTA SUCESSO:', data);
-      // Aqui você pode lidar com a resposta de sucesso
     });
   })
   .catch((error) => {
