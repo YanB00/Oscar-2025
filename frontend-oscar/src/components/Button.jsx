@@ -5,7 +5,7 @@ const Button = ({ label, router, cod_filme, className }) => {
     return (
         <div className={compStyle.buttonContainer}> 
             <Link 
-                to={`<span class="math-inline">\{router\}</span>{cod_filme}`} 
+                to={`${router}${cod_filme}`}
                 style={{ textDecoration: 'none', display: 'block' }} 
             >
                 <button className={`${compStyle.button} ${className || ''}`}>
