@@ -24,7 +24,7 @@ const Navbar = () => {
         />
         <Link to="/" className={style.brand}>
           <img className={style.logo} src={logoOscarImage} alt='Logo do Oscar' />
-          <span className={style.title}>Oscar</span>
+          <span className={style.title}>OscarTeca</span>
         </Link>
       </div>
 

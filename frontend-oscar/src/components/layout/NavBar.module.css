@@ -2,9 +2,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #110e0e;
-    --fundo-hover: #110e0e;
-    --cor-texto-hover: #fff;
+    background-color: #f8f4db;
+    --fundo-hover: #f8f4db;
+    --cor-texto-hover: #dfca4e;
     padding: 1rem 2rem;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     height: 107px;
@@ -68,9 +68,9 @@
 }
 
 .sobre{
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   text-decoration: none;
-  color: #dfca4e;
+  color: #85792e;
   font-weight: bold;
   font-size: 1.1rem;
   padding: 10px 10px; 

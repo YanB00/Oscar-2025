@@ -1,7 +1,7 @@
 .button {
-  font-family: 'Inter', sans-serif;
-  background-color: #dfca4e;
-  color: #3c3030;
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(145deg, #a19230, #e0cc57);
+  color: #f8f4db;
   font-size: 1rem;
   font-weight: bold;
   padding: 0.5rem 1.5rem;
@@ -13,6 +13,6 @@
 
 .button:hover {
   background-color: var(--fundo-hover);
-  color: var(--cor-texto-hover);
-  border: 2px solid #dfca4e; 
+  color: #7c6d15;
+  border: 2px solid #7c6d15; 
 }

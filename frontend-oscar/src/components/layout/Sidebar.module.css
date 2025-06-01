@@ -3,7 +3,7 @@
   top: 107px; 
   left: 0px;
   width: 200px;
-  background-color: #110e0e;
+  background-color: #f8f4db;
   padding: 20px;
   z-index: 1000;
   bottom: 0;
@@ -30,7 +30,7 @@
 
 .sidebarItem:hover {
   color: #85792e;
-  background-color: #2a2626; 
+  background-color: #dfca4e; 
   border-radius: 2px; 
 }
 

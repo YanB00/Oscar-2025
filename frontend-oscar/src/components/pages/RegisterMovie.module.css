@@ -4,7 +4,7 @@ form {
     padding: 2rem;
     border: 1px solid #dfca4e; 
     border-radius: 8px; 
-    background-color: #f8f4db; 
+    background-color: #f1ecc7; 
     -fundo-hover: #f8f4db;
     --cor-texto-hover: #dfca4e; 
     font-family: 'Quicksand', sans-serif;
@@ -14,13 +14,13 @@ form {
     font-family: 'Quicksand', sans-serif;
     text-align: center;
     margin-bottom: 2rem;
-    color: #110e0e;
+    color: #020202;
   }
   
   form label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #110e0e;
+    color: #020202;
   }
   
   form input[type="text"],
@@ -28,7 +28,7 @@ form {
     width: calc(100% - 1rem); 
     padding: 0.5rem;
     margin-bottom: 1rem;
-    border: 1px solid #070606;
+    border: 1px solid #020202;
     border-radius: 4px;
     box-sizing: border-box;
   }

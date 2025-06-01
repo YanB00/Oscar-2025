@@ -4,3 +4,33 @@
     box-sizing: border-box;
     overflow-x: hidden;
 }
+.home_con {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    min-height: calc(100vh - 120px); 
+    background-color: #f1ecc7; 
+    color: #020202;
+    font-family: 'Quicksand', sans-serif;
+
+}
+
+.home_text_content {
+    max-width: 800px; 
+}
+
+.home_text_content h1 {
+    font-size: 2.5rem;
+    color: #b08d57; 
+    margin-bottom: 20px;
+}
+
+.home_text_content p {
+    font-size: 1.125rem; 
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
