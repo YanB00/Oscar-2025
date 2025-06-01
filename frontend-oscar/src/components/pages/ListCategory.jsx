@@ -4,21 +4,19 @@ import MovieCard from '../MovieCard';
 import ContainerMovie from '../layout/ContainerMovie';
 import style from './ListCategory.module.css';
 
-import conclave from '../../../assets/conclave.jpg'; // Assuming default movie image
+import conclave from '../../../assets/conclave.jpg'; 
 
 const ListCategory = () => {
     const [categories, setCategories] = useState([]);
     const [movies, setMovies] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState(null); // Stores the ID of the selected category
-    const [loadingMovies, setLoadingMovies] = useState(false); // State for loading indicator
-    const [errorMovies, setErrorMovies] = useState(null); // State for movie fetching errors
-    const [loadingCategories, setLoadingCategories] = useState(false); // State for category loading
-    const [errorCategories, setErrorCategories] = useState(null); // State for category fetching errors
-
+    const [selectedCategory, setSelectedCategory] = useState(null); 
+    const [loadingMovies, setLoadingMovies] = useState(false); 
+    const [errorMovies, setErrorMovies] = useState(null); 
+    const [loadingCategories, setLoadingCategories] = useState(false); 
+    const [errorCategories, setErrorCategories] = useState(null); 
 
     const API_BASE_URL = 'http://localhost:5000';
 
-    // Effect to fetch all categories when the component mounts
     useEffect(() => {
         setLoadingCategories(true);
         setErrorCategories(null);
@@ -50,14 +48,13 @@ const ListCategory = () => {
         .finally(() => {
             setLoadingCategories(false);
         });
-    }, []); // Empty dependency array means this runs once on component mount
+    }, []); 
 
-    // Function to fetch movies based on category ID
     const fetchMoviesByCategory = (categoryId) => {
-        setSelectedCategory(categoryId); // Update selected category state
-        setMovies([]); // Clear movies before fetching new ones
-        setLoadingMovies(true); // Set loading to true
-        setErrorMovies(null); // Clear previous errors
+        setSelectedCategory(categoryId);
+        setMovies([]); 
+        setLoadingMovies(true);
+        setErrorMovies(null); 
 
         fetch(`${API_BASE_URL}/listagemFilmes/categoria/${categoryId}`, {
             method: 'GET',
@@ -70,17 +67,16 @@ const ListCategory = () => {
         })
         .then(async (resp) => {
             if (!resp.ok) {
-                const errorBody = await resp.json(); // Assuming all non-OK responses are JSON
+                const errorBody = await resp.json(); 
                 console.error(`Erro na resposta da API (${resp.status}):`, errorBody);
 
-                // Specific handling for 404 with "Nenhum filme encontrado para esta categoria."
                 if (resp.status === 404 && errorBody.mensageStatus === 'Nenhum filme encontrado para esta categoria.') {
-                    setMovies([]); // Ensure movies are cleared
-                    setErrorMovies(null); // Clear any error, as this is an "expected" 404
-                    return Promise.reject('No movies found for this category - treated as empty list.'); // Reject to stop .then chain
+                    setMovies([]); 
+                    setErrorMovies(null); 
+                    return Promise.reject('No movies found for this category - treated as empty list.'); 
                 } else {
                     setErrorMovies(errorBody.mensageStatus || `Erro: ${resp.status}`);
-                    return Promise.reject(`Erro na requisição: ${resp.status}`); // Reject the promise to trigger catch
+                    return Promise.reject(`Erro na requisição: ${resp.status}`); 
                 }
             }
             return resp.json();
@@ -96,17 +92,15 @@ const ListCategory = () => {
             }
         })
         .catch((err) => {
-            // Only set a generic error if it's not the "no movies found" rejection
             if (err !== 'No movies found for this category - treated as empty list.') {
                 console.error(`Erro ao buscar filmes para a categoria ${categoryId}:`, err);
-                if (!errorMovies) { // Avoid overwriting specific error messages set above
+                if (!errorMovies) { 
                     setErrorMovies('Erro de rede ou servidor ao carregar filmes.');
                 }
             }
-            // If it was the "no movies found" rejection, movies are already [] and error is null
         })
         .finally(() => {
-            setLoadingMovies(false); // Always set loading to false after fetch completes
+            setLoadingMovies(false); 
         });
     };
 
@@ -144,7 +138,6 @@ const ListCategory = () => {
                 </h1>
 
                 {loadingMovies && <p>Carregando filmes...</p>}
-                {/* Only show error if errorMovies is truly an error (not a "no movies found" scenario) */}
                 {errorMovies && <p className={style.errorMessage}>Erro: {errorMovies}</p>}
 
                 {!loadingMovies && !errorMovies && (
@@ -157,11 +150,11 @@ const ListCategory = () => {
                                     nome_filme={movie.nome_filme}
                                     nome_indicado={movie.nome_indicado}
                                     cod_categoria={movie.cod_categoria}
-                                    imagem={conclave} // Use your default image
+                                    imagem={conclave} 
                                 />
                             ))
                         ) : (
-                            // Display "Nenhum filme para exibir nesta categoria." when no movies are found and no hard error
+                            // Display "Nenhum filme para exibir nesta categoria."
                             <p>{selectedCategory === null ? 'Nenhuma categoria selecionada.' : 'Nenhum filme para exibir nesta categoria.'}</p>
                         )}
                     </ContainerMovie>
